@@ -21,6 +21,10 @@
         <appender-ref ref="STDOUT"/>
     </logger>
 
+    <logger name="org.mybatis" level="" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
     <logger name="org.springframework.web.servlet.mvc" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>

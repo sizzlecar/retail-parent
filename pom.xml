@@ -15,7 +15,8 @@
 		<module>retail-process</module>
 		<module>retail-biz</module>
 		<module>retail-consul</module>
-	</modules>
+        <module>retail-common</module>
+    </modules>
 
 	<groupId>com.voyageone</groupId>
 	<artifactId>retail-parent</artifactId>
@@ -72,6 +73,25 @@
 				<artifactId>lombok</artifactId>
 				<version>1.18.16</version>
 			</dependency>
+
+			<dependency>
+				<artifactId>retail-common</artifactId>
+				<groupId>com.voyageone</groupId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.github.openfeign.form</groupId>
+				<artifactId>feign-form</artifactId>
+				<version>3.8.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.github.openfeign.form</groupId>
+				<artifactId>feign-form-spring</artifactId>
+				<version>3.8.0</version>
+			</dependency>
+
 
 		</dependencies>
 
