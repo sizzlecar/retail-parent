@@ -5,7 +5,9 @@ import lombok.Data;
 
 import java.util.List;
 
-
+/**
+ * 操作单子参数model
+ */
 @Data
 public class TaskActionReq {
 

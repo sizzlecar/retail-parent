@@ -1,53 +1,55 @@
 package com.voyageone.retail.biz.process.model.response;
 
-
 import com.voyageone.retail.biz.process.model.ProcessVariables;
 import lombok.Data;
 
 import java.util.List;
 
 /**
- * 查询task rep
+ * 查询任务历史返回参数model
  */
 @Data
-public class QueryTaskRep {
+public class QueryTaskHistoryRep {
 
     private String assignee;
 
     private String category;
 
-    private String delegationState;
+    private String claimTime;
+
+    private String deleteReason;
 
     private String description;
 
-    private String executionId;
+    private String dueDate;
 
-    private String executionUrl;
+    private Integer durationInMillis;
+
+    private String endTime;
+
+    private String executionId;
 
     private String formKey;
 
-    /**
-     * task id
-     */
     private String id;
+
+    private String name;
+
+    private String owner;
+
+    private String parentTaskId;
 
     private String processDefinitionId;
 
-    /**
-     * 流程实例id
-     */
     private String processInstanceId;
 
     private String propagatedStageInstanceId;
 
-    /**
-     * 租户id
-     */
     private String tenantId;
 
-    /**
-     * 变量id
-     */
     private List<ProcessVariables> variables;
+
+    private Integer workTimeInMillis;
+
 
 }

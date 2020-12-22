@@ -23,6 +23,9 @@ public class StartProcessInstanceRep {
 
     private Boolean ended;
 
+    /**
+     * 流程实例id
+     */
     private String id;
 
     private String name;
@@ -50,5 +53,7 @@ public class StartProcessInstanceRep {
     private String url;
 
     private List<ProcessVariables> variables;
+
+    private Integer workTimeInMillis;
 
 }

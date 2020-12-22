@@ -20,7 +20,7 @@ public class RestTemplateDeploymentController {
         this.restTemplate = restTemplate;
     }
 
-    @PostMapping("deployment")
+    @PostMapping("deployment2")
     public String createDeployment() throws Exception{
         HttpHeaders headers = new HttpHeaders();
         FileSystemResource fileSystemResource = new FileSystemResource(RestTemplateDeploymentController.class.getResource("/holiday-request.bpmn20.xml").getPath());

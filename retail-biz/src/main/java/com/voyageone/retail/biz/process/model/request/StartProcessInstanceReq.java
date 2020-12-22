@@ -23,6 +23,9 @@ public class StartProcessInstanceReq {
 
     private String processDefinitionId;
 
+    /**
+     * 流程定义的key,对应xml中 process标签的id,如果存在多个版本，则启动最新的版本
+     */
     private String processDefinitionKey;
 
     private Boolean returnVariables;
