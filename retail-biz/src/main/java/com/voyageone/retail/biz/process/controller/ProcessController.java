@@ -2,6 +2,7 @@ package com.voyageone.retail.biz.process.controller;
 
 import com.voyageone.retail.biz.process.client.ProcessClient;
 import com.voyageone.retail.biz.process.constants.UrlConstants;
+import com.voyageone.retail.biz.process.model.FileByteArrayResource;
 import com.voyageone.retail.biz.process.model.ListRep;
 import com.voyageone.retail.biz.process.model.request.*;
 import com.voyageone.retail.biz.process.model.response.CreateDeploymentRep;
@@ -9,7 +10,6 @@ import com.voyageone.retail.biz.process.model.response.QueryTaskHistoryRep;
 import com.voyageone.retail.biz.process.model.response.QueryTaskRep;
 import com.voyageone.retail.biz.process.model.response.StartProcessInstanceRep;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.validation.annotation.Validated;
@@ -51,10 +51,7 @@ public class ProcessController {
         MultiValueMap<String, Object> valueMap  = new LinkedMultiValueMap<>();
         valueMap.add("deploymentKey", createDeploymentReq.getDeploymentKey());
         valueMap.add("deploymentKeyName", createDeploymentReq.getDeploymentKeyName());
-        valueMap.add("file", new ByteArrayResource(array));
-        valueMap.add("fileName", file.getOriginalFilename());
-
-
+        valueMap.add("file", new FileByteArrayResource(array, "bpmn20.xml", file.getOriginalFilename()));
         return processClient.createDeployment(valueMap);
     }
 
