@@ -14,8 +14,6 @@
 	<modules>
 		<module>retail-process</module>
 		<module>retail-biz</module>
-		<module>retail-consul</module>
-        <module>retail-common</module>
     </modules>
 
 	<groupId>com.voyageone</groupId>
@@ -74,11 +72,6 @@
 				<version>1.18.16</version>
 			</dependency>
 
-			<dependency>
-				<artifactId>retail-common</artifactId>
-				<groupId>com.voyageone</groupId>
-				<version>0.0.1-SNAPSHOT</version>
-			</dependency>
 
 			<dependency>
 				<groupId>io.github.openfeign.form</groupId>
