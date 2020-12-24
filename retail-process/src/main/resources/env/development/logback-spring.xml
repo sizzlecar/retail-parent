@@ -21,7 +21,11 @@
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <logger name="org.mybatis" level="" additivity="false">
+    <logger name="org.mybatis" level="DEBUG" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="org.flowable.engine" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 
