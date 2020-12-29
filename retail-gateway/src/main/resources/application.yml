@@ -1,0 +1,6 @@
+server:
+  port: 18084
+
+spring:
+  profiles:
+    active: @environment@
