@@ -1,0 +1,55 @@
+#网关配置模板,实际使用时可以将此配置文件放入consul中进行管理
+
+#请求和响应GZIP压缩支持
+feign:
+  httpclient:
+    connection-timeout: 10000
+  okhttp:
+    enabled: true
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true
+
+# 断路器設置
+hystrix:
+  threadpool:
+    default:
+      coreSize: 100
+      maxQueueSize: 1000
+      queueSizeRejectionThreshold: 500
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          lowerCaseServiceId: true
+          enabled: true
+      default-filters: []
+      routes:
+        - id: process-service
+          uri: lb://process-service
+          predicates:
+            - Path=/retail/process/**
+          filters:
+            - StripPrefix=2
+        - id: biz-service
+          uri: lb://biz-service
+          predicates:
+            - Path=/retail/retail-biz/**
+          filters:
+            - StripPrefix=1
+    loadbalancer:
+      retry:
+        enabled: false
