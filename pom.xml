@@ -15,7 +15,8 @@
 		<module>retail-process</module>
 		<module>retail-biz</module>
 		<module>retail-gateway</module>
-	</modules>
+        <module>retail-oauth</module>
+    </modules>
 
 	<groupId>com.voyageone</groupId>
 	<artifactId>retail-parent</artifactId>
