@@ -53,3 +53,6 @@ spring:
     loadbalancer:
       retry:
         enabled: false
+
+jwt-config:
+    key: jinwandalaohu

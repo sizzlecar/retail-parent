@@ -1,5 +1,6 @@
 package com.voyageone.retail.gateway;
 
+import com.voyageone.retail.gateway.utils.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -22,10 +23,16 @@ import reactor.core.publisher.Mono;
 @Component
 public class AuthenticateGlobalFilter implements GlobalFilter, Ordered {
 
-    private static final String BEARER = "Bearer";
     private static final String SPACER = " ";
     private static final String BEARER_SPACER = "Bearer ";
     private static final String AUTHORIZATION = "Authorization";
+
+    private final JwtUtils jwtUtils;
+
+
+    public AuthenticateGlobalFilter(JwtUtils jwtUtils) {
+        this.jwtUtils = jwtUtils;
+    }
 
     /**
      * 1. 获取请求头 Authorization 中的token
@@ -46,11 +53,8 @@ public class AuthenticateGlobalFilter implements GlobalFilter, Ordered {
         //获取token
         String token = parseToken(requestHeaders);
         log.info("开始过滤，routeId:{}, path:{},token:{}", route.getId(), path, token);
-
         //验证token是否正确
-
-
-
+        jwtUtils.parserToken(token);
         return chain.filter(exchange);
     }
 
