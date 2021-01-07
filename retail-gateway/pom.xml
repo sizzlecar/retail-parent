@@ -10,10 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>retail-gateway</artifactId>
 
-    <properties>
-        <jwt.version>0.9.1</jwt.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -55,7 +51,11 @@
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
-            <version>${jwt.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.voyageone</groupId>
+            <artifactId>retail-common</artifactId>
         </dependency>
 
     </dependencies>

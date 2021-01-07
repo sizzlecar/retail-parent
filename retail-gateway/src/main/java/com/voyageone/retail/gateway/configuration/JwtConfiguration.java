@@ -1,16 +1,21 @@
-package com.voyageone.retail.gateway.utils;
+package com.voyageone.retail.gateway.configuration;
+
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+
+/**
+ * jwt 相关配置
+ */
 @ConfigurationProperties(prefix = "jwt-config")
 @Component
 @Data
 public class JwtConfiguration {
 
     /**
-     * 密钥
+     * 验证jwt是否合法公钥
      */
-    String key;
+    private String publicKey;
 }

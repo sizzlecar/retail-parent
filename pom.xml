@@ -8,7 +8,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.2.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 
 	<modules>
@@ -16,7 +16,8 @@
 		<module>retail-biz</module>
 		<module>retail-gateway</module>
         <module>retail-oauth</module>
-    </modules>
+		<module>retail-common</module>
+	</modules>
 
 	<groupId>com.voyageone</groupId>
 	<artifactId>retail-parent</artifactId>
@@ -30,6 +31,8 @@
 		<spring-cloud.version>Hoxton.SR1</spring-cloud.version>
 		<swagger2.version>2.9.2</swagger2.version>
 		<druid.version>1.2.1</druid.version>
+		<jwt.version>0.9.1</jwt.version>
+		<retail.version>0.0.1-SNAPSHOT</retail.version>
 	</properties>
 
 
@@ -74,7 +77,6 @@
 				<version>1.18.16</version>
 			</dependency>
 
-
 			<dependency>
 				<groupId>io.github.openfeign.form</groupId>
 				<artifactId>feign-form</artifactId>
@@ -85,6 +87,18 @@
 				<groupId>io.github.openfeign.form</groupId>
 				<artifactId>feign-form-spring</artifactId>
 				<version>3.8.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt</artifactId>
+				<version>${jwt.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.voyageone</groupId>
+				<artifactId>retail-common</artifactId>
+				<version>${retail.version}</version>
 			</dependency>
 
 
