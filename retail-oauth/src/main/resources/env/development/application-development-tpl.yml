@@ -1,7 +1,7 @@
 # 数据源配置模板，实际使用中可以将此配置文件放入consul中管理
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/retail_parent?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://localhost:3306/retail_oauth?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
     username: username
     password: password
     driver-class-name: com.mysql.jdbc.Driver

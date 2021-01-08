@@ -1,18 +1,3 @@
-/*
- Navicat MySQL Data Transfer
-
- Source Server         : 132
- Source Server Type    : MySQL
- Source Server Version : 50726
- Source Host           : 10.0.0.132:3306
- Source Schema         : retail_parent
-
- Target Server Type    : MySQL
- Target Server Version : 50726
- File Encoding         : 65001
-
- Date: 07/01/2021 19:44:30
-*/
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
