@@ -40,7 +40,7 @@ CREATE TABLE `retail_auth`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `retail_group`;
 CREATE TABLE `retail_group`  (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '部门名称',
   `type` tinyint(4) NULL DEFAULT NULL COMMENT '类型',
   `parent_id` int(11) NOT NULL COMMENT '父id，0代表根节点',
@@ -57,7 +57,7 @@ CREATE TABLE `retail_group`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `retail_menu`;
 CREATE TABLE `retail_menu`  (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `module_id` int(11) NOT NULL COMMENT '模块id',
   `parent_id` int(11) NOT NULL COMMENT '父id，为0代表根节点',
   `type` tinyint(4) NOT NULL COMMENT '类型',
@@ -78,7 +78,7 @@ CREATE TABLE `retail_menu`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `retail_module`;
 CREATE TABLE `retail_module`  (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '名称',
   `icon_url` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'icon url',
   `type` tinyint(4) NULL DEFAULT NULL COMMENT '类型',
@@ -97,7 +97,7 @@ CREATE TABLE `retail_module`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `retail_role`;
 CREATE TABLE `retail_role`  (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色名称',
   `creator_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '创建人id',
   `created_time` datetime(0) NOT NULL COMMENT '创建时间',
@@ -111,7 +111,7 @@ CREATE TABLE `retail_role`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `retail_role_group_mapping`;
 CREATE TABLE `retail_role_group_mapping`  (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `role_id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL,
   `status` tinyint(4) NOT NULL COMMENT '状态,0 正常',
@@ -132,7 +132,7 @@ CREATE TABLE `retail_role_group_mapping`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `retail_role_module_menu_mapping`;
 CREATE TABLE `retail_role_module_menu_mapping`  (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `group_id` int(11) NOT NULL COMMENT 'group表id',
   `role_id` int(11) NOT NULL COMMENT 'role表id',
   `module_id` int(11) NOT NULL COMMENT 'module表id',
@@ -178,7 +178,7 @@ CREATE TABLE `retail_user`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `retail_user_role_mapping`;
 CREATE TABLE `retail_user_role_mapping`  (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   `status` tinyint(4) NOT NULL COMMENT '状态,0 正常',
