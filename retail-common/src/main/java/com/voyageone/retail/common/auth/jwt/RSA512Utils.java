@@ -14,16 +14,6 @@ public class RSA512Utils {
     public static final int KEY_SIZE = 512;
     private volatile static KeyPairGenerator keyPairGenerator;
 
-    /**
-     * 密钥对map key
-     */
-    public interface RsaKey{
-
-        String PUBLIC_KEY = "publicKey";
-        String PRIVATE_KEY = "privateKey";
-
-    }
-
 
     /**
      * 单例获取 keyPairGenerator
