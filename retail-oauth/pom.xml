@@ -61,6 +61,11 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.voyageone</groupId>
+            <artifactId>retail-common</artifactId>
+        </dependency>
+
     </dependencies>
 
     <profiles>
