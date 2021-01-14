@@ -50,6 +50,12 @@ spring:
             - Path=/retail/retail-biz/**
           filters:
             - StripPrefix=1
+        - id: oauth-service
+            uri: lb://oauth-service
+            predicates:
+              - Path=/retail/retail-oauth/**
+            filters:
+              - StripPrefix=1
     loadbalancer:
       retry:
         enabled: false

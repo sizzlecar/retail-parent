@@ -6,7 +6,7 @@
     <!-- 引入配置文件 -->
     <properties resource="dao-config.properties"/>
 
-    <context id="MySQLTables" targetRuntime="MyBatis3">
+    <context id="MySQLTables" targetRuntime="com.voyageone.retail.common.generator.ExtIntrospectedTable">
         <property name="javaFileEncoding" value="UTF-8"/>
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
@@ -37,8 +37,8 @@
         </sqlMapGenerator>
 
         <javaClientGenerator type="XMLMAPPER" targetPackage="${dao.package}" targetProject="${dao.project}">
-            <property name="rootInterface" value="${dao.rootInterface}"/>
-            <property name="partitionRootInterface" value="${dao.partitionRootInterface}"/>
+            <!--<property name="rootInterface" value="${dao.rootInterface}"/>-->
+            <!--<property name="partitionRootInterface" value="${dao.partitionRootInterface}"/>-->
             <property name="methodGenerate" value="${dao.methodGenerate}"/>
         </javaClientGenerator>
 

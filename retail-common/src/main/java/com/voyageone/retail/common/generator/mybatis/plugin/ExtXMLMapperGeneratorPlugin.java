@@ -51,7 +51,7 @@ public class ExtXMLMapperGeneratorPlugin extends PluginAdapter {
     private XmlElement getExtSqlMapElement(IntrospectedTableMyBatis3Impl introspectedTable) {
         XmlElement answer = new XmlElement("mapper");
         String namespace = introspectedTable.getMyBatis3SqlMapNamespace();
-        answer.addAttribute(new Attribute("namespace", namespace));
+        answer.addAttribute(new Attribute("namespace", namespace + "Ext"));
         answer.addElement(new TextElement("\n"));
         return answer;
     }

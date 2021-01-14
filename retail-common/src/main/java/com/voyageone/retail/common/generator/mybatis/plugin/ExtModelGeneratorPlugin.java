@@ -7,7 +7,6 @@ import org.mybatis.generator.internal.DefaultCommentGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ExtModelGeneratorPlugin extends PluginAdapter {
@@ -42,6 +41,7 @@ public class ExtModelGeneratorPlugin extends PluginAdapter {
         List<GeneratedJavaFile> answer = new ArrayList<>();
         List<CompilationUnit> compilationUnits = getExtCompilationUnits(introspectedTable,introspectedTable.getBaseRecordType() + "_Field", null);
         for (CompilationUnit compilationUnit : compilationUnits) {
+            //xxModel 文件
             GeneratedJavaFile gjf = new GeneratedJavaFile(compilationUnit,
                     context.getJavaModelGeneratorConfiguration().getTargetProject(),
                     context.getProperty(PropertyRegistry.CONTEXT_JAVA_FILE_ENCODING),
@@ -53,9 +53,10 @@ public class ExtModelGeneratorPlugin extends PluginAdapter {
 
         introspectedTable.setBaseRecordType(introspectedTable.getBaseRecordType() + "_Field");
         compilationUnits = introspectedTable.getGeneratedJavaFiles().stream().map(GeneratedJavaFile::getCompilationUnit).collect(Collectors.toList());
+        boolean checkOverwriteFlag = false;
         for (CompilationUnit compilationUnit : compilationUnits) {
             if (compilationUnit instanceof InnerClass) {
-                //类文件
+                //xxModel_Field 文
                 ((InnerClass)compilationUnit).setAbstract(true);
                 //((InnerClass)compilationUnit).setVisibility(JavaVisibility.DEFAULT);
                 List<IntrospectedColumn> primaryKeyColumns = introspectedTable.getPrimaryKeyColumns();
@@ -65,31 +66,42 @@ public class ExtModelGeneratorPlugin extends PluginAdapter {
                     ((InnerClass) compilationUnit).setSuperClass(superClass);
                 }
             }else if (compilationUnit instanceof Interface){
-                //接口文件
-                String modelName = introspectedTable.getFullyQualifiedTable().getDomainObjectName();
+                //xxMapperExt文件
+                /*String modelName = introspectedTable.getFullyQualifiedTable().getDomainObjectName();
                 Optional<FullyQualifiedJavaType> typeOptional = compilationUnit.getSuperInterfaceTypes().stream().findFirst();
                 String superInterfaceStr = null;
                 FullyQualifiedJavaType superJavaType = null;
                 if(typeOptional.isPresent()){
                     superJavaType = typeOptional.get();
-                    superInterfaceStr = superJavaType.getShortName() + String.format("<%s>", modelName);
-                }
-                Interface newInterFace = new Interface(new FullyQualifiedJavaType(introspectedTable.getDAOInterfaceType()));
+                    superInterfaceStr = superJavaType.getShortName();
+                }*/
+                Interface newInterFace = new Interface(new FullyQualifiedJavaType(introspectedTable.getMyBatis3JavaMapperType() + "Ext"));
                 newInterFace.setVisibility(JavaVisibility.PUBLIC);
-                if(superInterfaceStr != null){
-                    FullyQualifiedJavaType superInterface = new FullyQualifiedJavaType(superJavaType.getFullyQualifiedName());
+                newInterFace.addAnnotation("@Repository");
+                newInterFace.addImportedType(new FullyQualifiedJavaType("org.springframework.stereotype.Repository"));
+                compilationUnit = newInterFace;
+                /*if(superInterfaceStr != null){
+                    FullyQualifiedJavaType superInterface = new FullyQualifiedJavaType(superInterfaceStr);
+                    superInterface.addTypeArgument(new FullyQualifiedJavaType(modelName));
                     newInterFace.addSuperInterface(superInterface);
-                    newInterFace.addImportedType(superInterface);
-                    newInterFace.addAnnotation("@Repository");
-                    newInterFace.addImportedType(new FullyQualifiedJavaType("org.springframework.stereotype.Repository"));
-                    compilationUnit = newInterFace;
-                }
+                    newInterFace.addImportedType(new FullyQualifiedJavaType(superJavaType.getFullyQualifiedName()));
+                    newInterFace.addImportedType(new FullyQualifiedJavaType(context.getJavaModelGeneratorConfiguration().getTargetPackage() + "." + modelName));
+                }*/
+                checkOverwriteFlag = true;
+
             }
+
             GeneratedJavaFile gjf = new GeneratedJavaFile(compilationUnit,
                     context.getJavaModelGeneratorConfiguration().getTargetProject(),
                     context.getProperty(PropertyRegistry.CONTEXT_JAVA_FILE_ENCODING),
                     context.getJavaFormatter());
-            answer.add(gjf);
+            if(checkOverwriteFlag){
+                if(!Utils.checkFileExist(gjf)){
+                    answer.add(gjf);
+                }
+            }else {
+                answer.add(gjf);
+            }
         }
 
         return answer;
