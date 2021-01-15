@@ -39,7 +39,7 @@ public class ExtModelGeneratorPlugin extends PluginAdapter {
     @Override
     public List<GeneratedJavaFile> contextGenerateAdditionalJavaFiles(IntrospectedTable introspectedTable) {
         List<GeneratedJavaFile> answer = new ArrayList<>();
-        List<CompilationUnit> compilationUnits = getExtCompilationUnits(introspectedTable,introspectedTable.getBaseRecordType() + "_Field", null);
+        List<CompilationUnit> compilationUnits = getExtCompilationUnits(introspectedTable, introspectedTable.getBaseRecordType() + "_Field", null);
         for (CompilationUnit compilationUnit : compilationUnits) {
             //xxModel 文件
             GeneratedJavaFile gjf = new GeneratedJavaFile(compilationUnit,
@@ -57,36 +57,20 @@ public class ExtModelGeneratorPlugin extends PluginAdapter {
         for (CompilationUnit compilationUnit : compilationUnits) {
             if (compilationUnit instanceof InnerClass) {
                 //xxModel_Field 文
-                ((InnerClass)compilationUnit).setAbstract(true);
-                //((InnerClass)compilationUnit).setVisibility(JavaVisibility.DEFAULT);
+                ((InnerClass) compilationUnit).setAbstract(true);
                 List<IntrospectedColumn> primaryKeyColumns = introspectedTable.getPrimaryKeyColumns();
                 if (primaryKeyColumns != null && primaryKeyColumns.size() == 1) {
                     String idClassShortName = primaryKeyColumns.get(0).getFullyQualifiedJavaType().getShortName();
                     String superClass = compilationUnit.getSuperClass().getFullyQualifiedName() + String.format("<%s>", idClassShortName);
                     ((InnerClass) compilationUnit).setSuperClass(superClass);
                 }
-            }else if (compilationUnit instanceof Interface){
+            } else if (compilationUnit instanceof Interface) {
                 //xxMapperExt文件
-                /*String modelName = introspectedTable.getFullyQualifiedTable().getDomainObjectName();
-                Optional<FullyQualifiedJavaType> typeOptional = compilationUnit.getSuperInterfaceTypes().stream().findFirst();
-                String superInterfaceStr = null;
-                FullyQualifiedJavaType superJavaType = null;
-                if(typeOptional.isPresent()){
-                    superJavaType = typeOptional.get();
-                    superInterfaceStr = superJavaType.getShortName();
-                }*/
                 Interface newInterFace = new Interface(new FullyQualifiedJavaType(introspectedTable.getMyBatis3JavaMapperType() + "Ext"));
                 newInterFace.setVisibility(JavaVisibility.PUBLIC);
                 newInterFace.addAnnotation("@Repository");
                 newInterFace.addImportedType(new FullyQualifiedJavaType("org.springframework.stereotype.Repository"));
                 compilationUnit = newInterFace;
-                /*if(superInterfaceStr != null){
-                    FullyQualifiedJavaType superInterface = new FullyQualifiedJavaType(superInterfaceStr);
-                    superInterface.addTypeArgument(new FullyQualifiedJavaType(modelName));
-                    newInterFace.addSuperInterface(superInterface);
-                    newInterFace.addImportedType(new FullyQualifiedJavaType(superJavaType.getFullyQualifiedName()));
-                    newInterFace.addImportedType(new FullyQualifiedJavaType(context.getJavaModelGeneratorConfiguration().getTargetPackage() + "." + modelName));
-                }*/
                 checkOverwriteFlag = true;
 
             }
@@ -95,11 +79,11 @@ public class ExtModelGeneratorPlugin extends PluginAdapter {
                     context.getJavaModelGeneratorConfiguration().getTargetProject(),
                     context.getProperty(PropertyRegistry.CONTEXT_JAVA_FILE_ENCODING),
                     context.getJavaFormatter());
-            if(checkOverwriteFlag){
-                if(!Utils.checkFileExist(gjf)){
+            if (checkOverwriteFlag) {
+                if (!Utils.checkFileExist(gjf)) {
                     answer.add(gjf);
                 }
-            }else {
+            } else {
                 answer.add(gjf);
             }
         }
@@ -108,21 +92,13 @@ public class ExtModelGeneratorPlugin extends PluginAdapter {
     }
 
 
-
-
-    /*
-     * @chuanyu.liang add
-     */
     public List<CompilationUnit> getExtCompilationUnits(IntrospectedTable introspectedTable, String rootClass, String interfaceClass) {
-        //ProgressCallback progressCallback = generator.getProgressCallback();
         FullyQualifiedTable table = introspectedTable.getFullyQualifiedTable();
-        //progressCallback.startTask(getString("Progress.8", table.toString())); //$NON-NLS-1$
         CommentGenerator commentGenerator = context.getCommentGenerator();
 
         FullyQualifiedJavaType type = new FullyQualifiedJavaType(introspectedTable.getBaseRecordType());
         TopLevelClass topLevelClass = new TopLevelClass(type);
         topLevelClass.setVisibility(JavaVisibility.PUBLIC);
-//        commentGenerator.addJavaFileComment(topLevelClass);
         if (commentGenerator instanceof DefaultCommentGenerator) {
             topLevelClass.addJavaDocLine("/**");
             topLevelClass.addJavaDocLine(" * Model [" + introspectedTable.getFullyQualifiedTable().getIntrospectedTableName() + "]");
