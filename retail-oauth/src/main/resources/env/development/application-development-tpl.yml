@@ -1,33 +1,22 @@
 # 数据源配置模板，实际使用中可以将此配置文件放入consul中管理
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/retail_oauth?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
-    username: username
-    password: password
-    type: com.alibaba.druid.pool.DruidDataSource
-    max-active: 400
-    maximum-pool-size: 400
-    maximum-lifetime: 18000000
-    maximum-idle: 30
-    maximum-wait: 10000
-    min-idle: 10
-    initial-size: 50
-    validation-query: SELECT 1
-    test-on-borrow: false
-    test-while-idle: true
-    time-between-eviction-runs-millis: 18800
-    jdbc-interceptors: ConnectionState;SlowQueryReport(threshold=60000)
-
-
 retail:
-  datasource-list:
+  datasource:
       oauth:
         url: jdbc:mysql://10.0.0.132:3306/retail_oauth?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
         username: root
         password: Hua_!23shang
-
-
-
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        configuration:
+          cache-prep-stmts: true
+          prep-stmt-cache-size: 250
+          prep-stmt-cache-sql-limit: 2048
+          use-server-prep-stmts: true
+          use-local-session-state: true
+          rewrite-batched-statements: true
+          cache-result-set-metadata: true
+          cache-server-configuration: true
+          elide-set-auto-commits: true
+          maintain-time-stats: false
 
 jwt-config:
   private-key: 30820154020100300d06092a864886f70d01010105000482013e3082013a0201000241008667b4c9df4d132f5fb0108e3890d3d4f3dc637c98edc92ab1d41f11a7ac467385ad5c247e1fc447288db84b4cbb4682edfe3c448fb004ce2a7e1cf8e224941d020301000102406cfdc22c8609418a84250977db450e92bce23646fed8acee1360b9851e9c644ff2bbecef719883204730ebe58ec94c5f772f4631cec2c58fea31be861d5b1f7d022100c11b45e9d34fa143b8305656913e683d45add54fc9a2f172c5fb2daa68b08b5b022100b22e0ef2ea5219ddefdd814b0b8ad77508ef566c7c76b11b20103a8b4a2d8fe7022059bf8e37c5711df73654a8dbe4f747452aec46d6a55528b87a116a40e8151d3f022059ddbd106b7a692d74b34568b2339ea39a940c04bf69a5bdc69828cee3e4c2f5022100ab660e1c3821f15ce14b20318c7b271ae5b809e52cb700f5cd3e3cd41aa5bff6

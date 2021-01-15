@@ -35,6 +35,7 @@
 		<retail.version>0.0.1-SNAPSHOT</retail.version>
 		<mybatis.spring.version>2.1.3</mybatis.spring.version>
 		<druid.spring.version>1.2.4</druid.spring.version>
+		<HikariCP.version>3.4.5</HikariCP.version>
 	</properties>
 
 
@@ -113,6 +114,12 @@
 				<groupId>com.alibaba</groupId>
 				<artifactId>druid-spring-boot-starter</artifactId>
 				<version>${druid.spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.zaxxer</groupId>
+				<artifactId>HikariCP</artifactId>
+				<version>${HikariCP.version}</version>
 			</dependency>
 
 

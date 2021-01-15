@@ -1,22 +1,30 @@
 package com.voyageone.retail.oauth.config;
 
-import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
+import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
-import javax.sql.DataSource;
-
 @Configuration
 public class RetailOauthDataSourceConfiguration {
 
+    @Bean
     @Primary
-    @Bean("datasourceOauth")
-    @ConfigurationProperties("spring.datasource.druid.oauth")
-    public DataSource dataSourceOauth(){
-        return DruidDataSourceBuilder.create().build();
+    @ConfigurationProperties("retail.datasource.oauth")
+    public DataSourceProperties oauthDataSourceProperties() {
+        return new DataSourceProperties();
     }
+
+    @Bean("datasourceOauth")
+    @Primary
+    @ConfigurationProperties("app.datasource.oauth.configuration")
+    public HikariDataSource oauthDataSource() {
+        return oauthDataSourceProperties().initializeDataSourceBuilder().type(HikariDataSource.class).build();
+    }
+
+
 
 
 }

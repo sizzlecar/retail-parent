@@ -36,14 +36,14 @@
             <property name="partitionTableNamePrefix" value="${xml.mapper.partitionTableNamePrefix}"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="${dao.package}" targetProject="${dao.project}">
+        <javaClientGenerator type="com.voyageone.retail.common.generator.ExtJavaMapperGenerator" targetPackage="${dao.package}" targetProject="${dao.project}">
             <!--<property name="rootInterface" value="${dao.rootInterface}"/>-->
             <!--<property name="partitionRootInterface" value="${dao.partitionRootInterface}"/>-->
             <property name="methodGenerate" value="${dao.methodGenerate}"/>
         </javaClientGenerator>
 
 
-        <table tableName="retail_user" delimitAllColumns="${table.delimitAllColumns}"
+        <!--<table tableName="retail_user" delimitAllColumns="${table.delimitAllColumns}"
                enableCountByExample="${table.enableCountByExample}"
                enableUpdateByExample="${table.enableUpdateByExample}"
                enableDeleteByExample="${table.enableDeleteByExample}"
@@ -53,6 +53,69 @@
         </table>
 
         <table tableName="retail_role" delimitAllColumns="${table.delimitAllColumns}"
+               enableCountByExample="${table.enableCountByExample}"
+               enableUpdateByExample="${table.enableUpdateByExample}"
+               enableDeleteByExample="${table.enableDeleteByExample}"
+               enableSelectByExample="${table.enableSelectByExample}"
+               selectByExampleQueryId="${table.selectByExampleQueryId}">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>-->
+
+        <table tableName="retail_auth" delimitAllColumns="${table.delimitAllColumns}"
+               enableCountByExample="${table.enableCountByExample}"
+               enableUpdateByExample="${table.enableUpdateByExample}"
+               enableDeleteByExample="${table.enableDeleteByExample}"
+               enableSelectByExample="${table.enableSelectByExample}"
+               selectByExampleQueryId="${table.selectByExampleQueryId}">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="retail_group" delimitAllColumns="${table.delimitAllColumns}"
+               enableCountByExample="${table.enableCountByExample}"
+               enableUpdateByExample="${table.enableUpdateByExample}"
+               enableDeleteByExample="${table.enableDeleteByExample}"
+               enableSelectByExample="${table.enableSelectByExample}"
+               selectByExampleQueryId="${table.selectByExampleQueryId}">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="retail_menu" delimitAllColumns="${table.delimitAllColumns}"
+               enableCountByExample="${table.enableCountByExample}"
+               enableUpdateByExample="${table.enableUpdateByExample}"
+               enableDeleteByExample="${table.enableDeleteByExample}"
+               enableSelectByExample="${table.enableSelectByExample}"
+               selectByExampleQueryId="${table.selectByExampleQueryId}">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="retail_module" delimitAllColumns="${table.delimitAllColumns}"
+               enableCountByExample="${table.enableCountByExample}"
+               enableUpdateByExample="${table.enableUpdateByExample}"
+               enableDeleteByExample="${table.enableDeleteByExample}"
+               enableSelectByExample="${table.enableSelectByExample}"
+               selectByExampleQueryId="${table.selectByExampleQueryId}">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="retail_role_group_mapping" delimitAllColumns="${table.delimitAllColumns}"
+               enableCountByExample="${table.enableCountByExample}"
+               enableUpdateByExample="${table.enableUpdateByExample}"
+               enableDeleteByExample="${table.enableDeleteByExample}"
+               enableSelectByExample="${table.enableSelectByExample}"
+               selectByExampleQueryId="${table.selectByExampleQueryId}">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="retail_role_module_menu_mapping" delimitAllColumns="${table.delimitAllColumns}"
+               enableCountByExample="${table.enableCountByExample}"
+               enableUpdateByExample="${table.enableUpdateByExample}"
+               enableDeleteByExample="${table.enableDeleteByExample}"
+               enableSelectByExample="${table.enableSelectByExample}"
+               selectByExampleQueryId="${table.selectByExampleQueryId}">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="retail_user_role_mapping" delimitAllColumns="${table.delimitAllColumns}"
                enableCountByExample="${table.enableCountByExample}"
                enableUpdateByExample="${table.enableUpdateByExample}"
                enableDeleteByExample="${table.enableDeleteByExample}"
