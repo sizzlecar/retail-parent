@@ -35,6 +35,8 @@
 		<retail.version>0.0.1-SNAPSHOT</retail.version>
 		<mybatis.spring.version>2.1.3</mybatis.spring.version>
 		<HikariCP.version>3.4.5</HikariCP.version>
+		<dromara.version>2.1.1</dromara.version>
+		<guava.version>29.0-jre</guava.version>
 	</properties>
 
 
@@ -113,6 +115,19 @@
 				<groupId>com.zaxxer</groupId>
 				<artifactId>HikariCP</artifactId>
 				<version>${HikariCP.version}</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>org.dromara</groupId>
+				<artifactId>hmily-spring-boot-starter-springcloud</artifactId>
+				<version>${dromara.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
 			</dependency>
 
 

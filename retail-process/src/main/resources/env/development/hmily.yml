@@ -1,0 +1,13 @@
+hmily:
+  server:
+    configMode: consul
+    appName: hmily
+
+remote:
+  consul:
+    hostAndPort: 10.0.1.64:8500 # consul服务地址
+    hostAndPorts:
+    key: data # consul 上的key
+    blacklistTimeInMillis: 6000
+    fileExtension: yml # consul上配置文件的格式（properties或者yml）二选一
+    passive: true # 开启自动更新
