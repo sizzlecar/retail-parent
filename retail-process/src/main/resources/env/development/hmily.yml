@@ -1,13 +1,47 @@
 hmily:
   server:
-    configMode: consul
-    appName: hmily
+    configMode: local
+    appName: process-sc
+    #  如果server.configMode eq local 的时候才会读取到这里的配置信息.
+  config:
+    appName: process-sc
+    serializer: kryo
+    contextTransmittalMode: threadLocal
+    scheduledThreadMax: 16
+    scheduledRecoveryDelay: 60
+    scheduledCleanDelay: 60
+    scheduledPhyDeletedDelay: 600
+    scheduledInitDelay: 30
+    recoverDelayTime: 60
+    cleanDelayTime: 180
+    limit: 200
+    retryMax: 10
+    bufferSize: 8192
+    consumerThreads: 16
+    asyncRepository: true
+    autoSql: true
+    phyDeleted: true
+    storeDays: 3
+    repository: mysql
 
-remote:
-  consul:
-    hostAndPort: 10.0.1.64:8500 # consul服务地址
-    hostAndPorts:
-    key: data # consul 上的key
-    blacklistTimeInMillis: 6000
-    fileExtension: yml # consul上配置文件的格式（properties或者yml）二选一
-    passive: true # 开启自动更新
+
+repository:
+  database:
+    driverClassName: com.mysql.jdbc.Driver
+    url : jdbc:mysql://10.0.0.132:3306/hmily?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: Hua_!23shang
+    maxActive: 20
+    minIdle: 10
+    connectionTimeout: 30000
+    idleTimeout: 600000
+    maxLifetime: 1800000
+
+#remote:
+#  consul:
+#    hostAndPort: 10.0.1.64:8500 # consul服务地址
+#    hostAndPorts:
+#    key: config/biz-sc,development/data # consul 上的key
+#    blacklistTimeInMillis: 6000
+#    fileExtension: yml # consul上配置文件的格式（properties或者yml）二选一
+#    passive: true # 开启自动更新

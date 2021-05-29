@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication(scanBasePackages = {"com.voyageone.retail.process", "org.flowable.rest"})
 @EnableDiscoveryClient
+@EnableFeignClients
 public class RetailProcessApplication {
 
 	public static void main(String[] args) {

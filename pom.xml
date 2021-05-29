@@ -37,6 +37,7 @@
 		<HikariCP.version>3.4.5</HikariCP.version>
 		<dromara.version>2.1.1</dromara.version>
 		<guava.version>29.0-jre</guava.version>
+		<commons-pool2.version>2.9.0</commons-pool2.version>
 	</properties>
 
 
@@ -129,6 +130,21 @@
 				<artifactId>guava</artifactId>
 				<version>${guava.version}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-pool2</artifactId>
+				<version>${commons-pool2.version}</version>
+			</dependency>
+<!--
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.47</version>
+			</dependency>
+-->
+
+
 
 
 		</dependencies>

@@ -4,7 +4,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class RetailProcessApplicationTests {
 
-	@Test
+	//@Test
 	void contextLoads() {
 	}
 
