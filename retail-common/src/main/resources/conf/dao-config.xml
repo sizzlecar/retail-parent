@@ -37,13 +37,13 @@
         </sqlMapGenerator>
 
         <javaClientGenerator type="XMLMAPPER" targetPackage="${dao.package}" targetProject="${dao.project}">
-            <property name="rootInterface" value="${dao.rootInterface}"/>
+            <!--<property name="rootInterface" value="${dao.rootInterface}"/>-->
             <property name="partitionRootInterface" value="${dao.partitionRootInterface}"/>
             <property name="methodGenerate" value="${dao.methodGenerate}"/>
         </javaClientGenerator>
 
 
-        <table tableName="retail_user" delimitAllColumns="${table.delimitAllColumns}"
+        <table tableName="rb_log" delimitAllColumns="${table.delimitAllColumns}"
                enableCountByExample="${table.enableCountByExample}"
                enableUpdateByExample="${table.enableUpdateByExample}"
                enableDeleteByExample="${table.enableDeleteByExample}"

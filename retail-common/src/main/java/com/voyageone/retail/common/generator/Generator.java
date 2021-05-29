@@ -16,7 +16,7 @@ public class Generator {
 
     public static void generate() throws Exception {
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        Resource[] resources = resolver.getResources("dao-config.xml");
+        Resource[] resources = resolver.getResources("conf/dao-config.xml");
         for (Resource resource : resources) {
             generate1(resource.getFile()).forEach(System.out::println);
         }
